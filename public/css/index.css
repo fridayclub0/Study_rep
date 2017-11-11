@@ -1,303 +1,83 @@
-html {
-        height : 100%;
+.global_wrap{
+		border:#000000 3px solid;
 }
-body {
-        height : 100%;
-	font-family : 'Rationale', sans-serif;
-	/*
-	background-image : url('../sysimg/_sunset2.png');
-	background-attachment : fixed;
-	background-position : center;
-	background-repeat : no-repeat;
-	background-size : cover;
-	font-family : 'Rationale', sans-serif;
-	*/
-	
-	/*background-color : orange;*/
-
+nav {
+		height: 50px;
+		width:100%;
+		border:inherit;
 }
-/*
-body::before {
-  background:url('../sysimg/daylightc.png') no-repeat left top;
-  background-size: 100% auto;
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: auto;
-  height: auto;
-  min-height : 100%;
-  min-width : 100%;
-  padding-bottom: 108px;
-  content: "";
-  z-index: -1;
+header{
+		height: 50px;
+		width:100%;
+		border:inherit;
 }
-*/
-
-.nightc {
-  background:url('../sysimg/nightc.png') no-repeat left bottom;
-  background-size: cover;
-  display: block;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  min-height : 100%;
-  content: "";
-  z-index: -1;
+#contents_wrap{
+		padding :5px 5px;
+		border:inherit;
+		}
+#contents_wrap:after{
+		content :"";
+		display :block;
+		clear :both;
+		}
+#main_contents{
+		/*height:500px;*/
+		width:70%;
+		float: left;
+		border:inherit;
 }
-.daylightc {
-  background:url('../sysimg/daylightc.png') no-repeat left bottom;
-  background-size: cover;
-  display: block;
-  position: fixed;
-  bottom : 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  min-height : 100%;
-  content: "";
-  z-index: -1;
+#sub_contents{
+		/*height:500px;*/
+		width:30%;
+		float:left;
+		border:inherit;
 }
-.sunsetc {
-  background:url('../sysimg/sunsetc.png') no-repeat left bottom;
-  background-size: cover;
-  display: block;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  min-height : 100%;
-  content: "";
-  z-index: -1;
-}         
-.night {
-	background-image : url('../sysimg/night.png');
+footer{
+		height:50px;
+		width:100%;
+		border:inherit;
 }
-.daylight {
-	background-image : url('../sysimg/daylight.png');
+ul{
+		padding:0;
+		margin:0;
 }
-.sunset {
-	background-image : url('../sysimg/sunset.png');
+ul li{
+		float:left;
+		width:33.33%;
+		/*height:100%;高さは指定しなくとも親要素と同じになる*/
+		list-style: none;
+		border:#000000 solid 1px;
+		box-sizing:border-box;
+		text-align:center;
 }
-.night2 {
-	background-image : url('../sysimg/night2.png');
+li a{
+		line-height:50px;
+		display: block;
 }
-.daylight2 {
-	background-image : url('../sysimg/daylight2.png');
+ul:after{
+		content : "";
+   		display : block;
+     	clear : both;
 }
-.sunset2 {
-	background-image : url('../sysimg/sunset2.png');
-}
-header {
-	/*background-image : url('../sysimg/daylight.png');*/
-	background-position : center;
-	background-repeat : no-repeat;
-	background-size : cover;
-	
-	border-bottom : 3px solid rgba(0,0,0,0.8); 
-	position : relative;
+/*ページ切り替え*/
+.page {
 	width : 100%;
-	height : 200px;
-	min-width : 320px;
-	overflow: hidden;
-	overflow : hidden;
-	
-}
-#top_menu {
-	width : 100%;
-	height : 40px;
-	min-width : 320px;
-	overflow : hidden;
-}
-.menu_button {
-	background-color : rgba(0,0,0,0.8);
-	color : white;
-	border-right : 1px solid rgba(1,1,1,0.5);
-	float : left;
-	width : 20%;
-	height : 40px;
-	text-align : center;
-	padding : 9px;
-	font-size : 20px;
-	font-family : 'Rationale', sans-serif;
-}
-.menu_button:hover {
-	color : orange;
-}
-#top_menu:after {
-	content : "";
-	display : clear;
-	clear : both;
-}
-#content {
-	position : relative;
-	height : 100%;
-	width : 100%;
-	padding : 20px 0;
-	min-width : 320px;
-}
-footer {
-	background-color : rgba(255,255,255,0.5);
-	z-index : 100;
-	position : fixed;
-	bottom : 0;
-	width : 100%;
-	height : 20px;
+	display : none;
 }
 
-textarea {
-	border : none;
-	background-color : rgba(255,255,255,0.5);
-}
-input[type='text'],input[type='email'],input[type='password'] {
-	border : none;
-	background-color : rgba(255,255,255,0.5);
+.Looking {
+	display : block;
 }
 
-#talk_index {
-	position : absolute;
-	width : 100%;
-	/*height : 1000px;*/
-	left : 0;
-	right : 0;
-	padding : 0 5px 20px 5px;
-	opacity : 1;
-}
-
-#login_index {
-	position : absolute;
-	width : 100%;
-	/*height : 1000px;*/
-	left : -200%;
-	right : 0;
-	padding : 0 20px 20px 20px;
-	margin-bottom : 10px;
-	opacity : 0;
-}
-
-
-.pad {
-	/*background-image : url('../sysimg/daylight2.png');*/
-	background-position : center;
-	background-repeat : no-repeat;
-	background-size : cover;
-}
-
-.button {
-	background-color : rgba(0,0,0,0.8);
-	color : white;
-	padding : 2 10px;
-	margin-bottom : 10px;
-	display : inline-block;
-	border : 1px solid black;
-}
-
-.button:active {
-    color : orange;
-}
-
-.submit {
-	margin-top : 10px;
-}
-
-.reload_button {
-	width : 100%;
-	text-align : center;
-	
-	font-size : 20px;
-	color : white;
-	
-	font-weight : bold;
-	background-color : rgba(0,0,0,0.8);
-	padding : 1px 0 2px 0;
-}
-.reload_button:hover {
-	color : orange;
-}
-
-@media (max-width: 600px){
-/*
-.nightc {
-    background-size: auto 113%;
-    height : 113%;
-}
-
-.daylightc {
-    background-size: auto 113%;
-    height : 113%;
-}
-
-.sunsetc {
-    background-size : auto 113%;
-    height : 113%;
-}*/
-.nightc {
-    background-size : auto 650px;
-    height : 650px;
-    bottom : -30px;
-}
-
-.daylightc {
-    background-size : auto 650px;
-    height : 650px;
-    bottom : -30px;
-}
-
-.sunsetc {
-    background-size : auto 650px;
-    height : 650px;
-    bottom : -30px;
-}
-
-.button {
-	font-size : 12px;
-}
-
-.reload_button {
-	font-size : 16px;
-}
-
-#top_menu {
-	height : 30px;
-}
-.menu_button {
-	background-color : rgba(0,0,0,0.8);
-	color : white;
-	border-right : 1px solid rgba(1,1,1,0.5);
-	float : left;
-	width : 20%;
-	height : 40px;
-	text-align : center;
-	padding : 7px;
-	font-size : 16px;
-	font-family : 'Rationale', sans-serif;
-}
-	
-header {
+#page1 {
 	height : 100px;
+	background-color : #ffccff;
 }
-#talk_index {
-	padding : 0 5px 10px 5px;
+#page2 {
+	height : 200px;
+	background-color : yellow;
 }
-
-}
-
-@media (max-width: 400px){
-    .nightc {
-    background-size: auto 600px;
-    height : 600px;
-}
-
-.daylightc {
-    background-size: auto 600px;
-    height : 600px;
-}
-
-.sunsetc {
-    background-size : auto 600px;
-    height : 600px;
-}
+#page3 {
+	height : 300px;
+	background-color : orange;
 }

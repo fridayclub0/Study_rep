@@ -1,59 +1,55 @@
-function open_obj(id,zindex){ //左からスライドイン
-	var obj = $(id);
-	obj.css('zIndex',zindex);
-	obj.animate({'left' : '0','opacity' : '1'},800);
+function open_page(num){
+	selecter = '#page'+num;
+	console.log(selecter);
+	var page = $(selecter);
+	$('#page1').removeClass('looking');
+	$('#page2').removeClass('looking');
+	$('#page3').removeClass('looking');
+	page.addClass('looking');
 }
 
-function close_obj(id){ //透明化しながら左側へスライドアウトする
-	var obj = $(id);
-	obj.animate({'left' : '-200%','opacity' : '0'},800)
-	.queue( function(next){$(this).css('zIndex','-1').dequeue();});
-	//そのうちどうにかしたいよね
-	if(id='#writing_pad'){
-		$('#talk_title').val('');
-       	$('#talk_comment').val('');
-       	$('#submit_talk_file').val('');
-	}
+function gen_ran(mode,len){
+	var charset = '';
+	if ( mode.match('A') ){charset = charset + 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';}
+	if ( mode.match('a') ){charset = charset + 'abcdefghijklmnopqrstuvwxyz';}
+	if ( mode.match('d') ){charset = charset + '0123456789';}
+	if ( mode.match('j') ){charset = charset + 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわおん';}
+
+	var cs_len = charset.length;
+	var ran = "";
+	
+	for(var i=0; i<len; i++){ran += charset[Math.floor(Math.random()*cs_len)];}
+	return ran;
 }
 
-function open_obj2(id,zindex){ //縦方向に広がりながら現れるパターン
-	var obj = $(id);
-	obj.css('zIndex',zindex);
-	obj.animate({'height' : '200px','opacity' : '1'},800);
+function create_data(){
+	var formdata = new FormData();
+	
+	var file_id = gen_ran('a',10);
+	var text = $('#test_input').val();
+	
+	formdata.append('file_id',file_id);
+	formdata.append('file_text',text);
+	
+	send_data('Test',formdata);
 }
 
-function close_obj2(id){ //縦方向に潰れながら消えるパターン
-	var obj = $(id);
-	obj.animate({'height' : '0','opacity' : '0'},800)
-	.queue( function(next){$(this).css('zIndex','-1').dequeue();});
-}
-
-
-
-function show_talkindex() {
-	var talk_index = $('#talk_index');
-	var login_index = $('#login_index');
-	talk_index.animate({
-		'left' : 0,
-		'opacity' : 1
-	},1000);
-	login_index.animate({
-		'left' : '-200%',
-		'opacity' : 0
-	},500);
-}
-
-function show_loginindex() {
-	var talk_index = $('#talk_index');
-	var login_index = $('#login_index');
-	talk_index.animate({
-		'left' : '-200%',
-		'opacity' : 0
-	},500);
-	login_index.animate({
-		'left' : 0,
-		'opacity' : 1
-	},1000);
+function send_data(table,formdata){
+	formdata.append('table',table);
+	$.ajax({
+		url:'/database',
+		type:"POST",
+		contentType: false,
+		processData: false,
+		cache: false,
+		data: formdata,
+		success: function(data){
+			console.log(data);
+		},
+		error: function(XMLHttpRequest,textStatus,errorThrown){
+			alert('Error:' + errorThrown);
+		}
+	});
 }
 
 
