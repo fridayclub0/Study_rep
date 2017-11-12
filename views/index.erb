@@ -7,14 +7,35 @@
 		<title>Haguluma blog</title>
 		<link href="/css/init.css" rel="stylesheet">
 		<link href="/css/index.css" rel="stylesheet">
+		<link href="/css/cal.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
 		<!--<script src="/js/jquery-3.1.1.min.js"></script>オフラインの時に-->
-				<script src="/js/index.js"></script>
+		<script src="/js/index.js"></script>
+		<script src="/js/calc.js"></script>
 	</head>
 	<body>
-		<!--<header></header>-->
-		<h1>Hello world</h1>
-		<!--<footer></footer>-->
+		<div class="global_wrap">
+			<nav id="global_nav">
+				<ul>
+					<li><a onclick='open_page(1);'>menu1</a></li>
+					<li><a onclick='open_page(2);'>menu2</a></li>
+					<li><a onclick='open_page(3);'>wiki</a></li>
+				</ul>
+			</nav>
+			<header></header>
+			<div id="contents_wrap">
+				<div id="main_contents">
+					<div id='page1' class='page'>page1</div>
+					<div id='page2' class='page'>page2</div>
+					<div id='page3' class='page'>
+						<input id='test_input'></input>
+						<button onclick="create_data();">button</button>
+					</div>
+				</div>
+				<div id="sub_contents"></div>
+			</div>		
+			<footer></footer>
+		</div>
 	</body>
 </html>
