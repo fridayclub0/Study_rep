@@ -1,11 +1,39 @@
+// セッションの格納
+//window.sessionStorage.setItem(['キー名'],['値']);
+// セッションの数の取得
+//window.sessionStorage.length
+// セッションの値の取得
+//window.sessionStorage.getItem(['キー名']);
+//console.log(a);    // => value1
+// 指定したセッションの削除
+//window.sessionStorage.removeItem(['キー名']);
+// 全てのセッションの削除
+//window.sessionStorage.clear();
+
+
+$(function(){
+	
+});
+
+function dom_empty(dom_id){
+	$(dom_id).empty();
+}
+
+function input_clear(dom_id){
+	console.log('input_clear');
+	$(dom_id).val('');
+}
+
+
 function open_page(num){
-	selecter = '#page'+num;
+	selecter = '.p'+num;
 	console.log(selecter);
 	var page = $(selecter);
-	$('#page1').removeClass('looking');
-	$('#page2').removeClass('looking');
-	$('#page3').removeClass('looking');
-	page.addClass('looking');
+	$('.p1').removeClass('Looking');
+	$('.p2').removeClass('Looking');
+	$('.p3').removeClass('Looking');
+	$('.p4').removeClass('Looking');
+	page.addClass('Looking');
 }
 
 function gen_ran(mode,len){
@@ -22,17 +50,6 @@ function gen_ran(mode,len){
 	return ran;
 }
 
-function create_data(){
-	var formdata = new FormData();
-	
-	var file_id = gen_ran('a',10);
-	var text = $('#test_input').val();
-	
-	formdata.append('file_id',file_id);
-	formdata.append('file_text',text);
-	
-	send_data('Test',formdata);
-}
 
 function send_data(table,formdata){
 	formdata.append('table',table);
@@ -51,5 +68,25 @@ function send_data(table,formdata){
 		}
 	});
 }
+
+
+function mark_down(text,selecter){	
+	marked.setOptions({
+ 		renderer: new marked.Renderer(),
+ 	 	gfm: true,
+ 	 	tables: true,
+ 	 	breaks: false,
+ 	 	pedantic: false,
+	 	sanitize: false,
+  	 	smartLists: true,
+  	 	smartypants: false
+	});
+	console.log(text+selecter);
+	$(selecter).html(marked(text));
+	$('pre code').each(function(i, block) {
+    	hljs.highlightBlock(block);
+	});
+}
+
 
 

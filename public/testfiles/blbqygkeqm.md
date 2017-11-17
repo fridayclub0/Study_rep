@@ -1,0 +1,19 @@
+# たいとる
+
+```
+post'/database' do
+  table = params[:table]
+  
+  if table == 'Test' then
+    file_id = params[:file_id]
+    file_text = params[:file_text]
+    Test.create(:file_id=>file_id,:file_text=>file_text)
+    File.open('./public/testfiles/'+file_id+'.txt','w+:utf-8') do |file|
+      file.write(file_text+"\n")
+      file.close
+    end
+  end
+
+  file_text
+end 
+```

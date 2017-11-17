@@ -37,18 +37,23 @@ footer{
 		width:100%;
 		border:inherit;
 }
-ul{
-		padding:0;
-		margin:0;
+
+
+#menu {
+	list-style-type : none;
+	margin : 0;
+	padding : 0;
 }
-ul li{
-		float:left;
-		width:33.33%;
-		/*height:100%;高さは指定しなくとも親要素と同じになる*/
-		list-style: none;
-		border:#000000 solid 1px;
-		box-sizing:border-box;
-		text-align:center;
+#menu li {
+	margin : 0;
+	padding : 0;
+	float:left;
+	width:33.33%;
+	/*height:100%;高さは指定しなくとも親要素と同じになる*/
+	list-style: none;
+	border:#000000 solid 1px;
+	box-sizing:border-box;
+	text-align:center;
 }
 li a{
 		line-height:50px;
@@ -61,23 +66,56 @@ ul:after{
 }
 /*ページ切り替え*/
 .page {
+	min-height : 300px;
 	width : 100%;
 	display : none;
+	padding : 20px 3%;
+}
+.side {
+	padding : 20px 5%;
 }
 
 .Looking {
 	display : block;
 }
+.hide {
+	display : none;
+}
 
 #page1 {
-	height : 100px;
 	background-color : #ffccff;
 }
 #page2 {
-	height : 200px;
 	background-color : yellow;
 }
 #page3 {
-	height : 300px;
 	background-color : orange;
+}
+#page3_side {
+	background-color : orange;
+}
+.p4 {
+	
+	background-color : #4183C4;
+}
+#wiki_workdesk textarea{
+	min-width : 100%;
+	max-width : 100%;
+	min-height : 200px;
+	max-height : 100%;
+}
+#wiki_preview {
+	border : 6px double #555;
+	margin-bottom : 2%;
+	padding : 10px;
+}
+#wiki_title_lists {
+	padding : 0;
+}
+#wiki_title_lists li{
+	list-style-type : none;
+	padding :3px;
+	margin :0;
+	margin-bottom :5px;
+	font-size :16px;
 }

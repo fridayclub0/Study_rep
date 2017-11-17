@@ -2,17 +2,6 @@ body {
 	margin : 0;
 }
 
-
-ul {
-	list-style-type : none;
-	margin : 0;
-	padding : 0;
-}
-li {
-	margin : 0;
-	padding : 0;
-}
-
 div {
 	box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -47,5 +36,23 @@ small {
 p {
 	margin : 0;
 	padding : 0;
+}
+button{
+	box-sizing : border-box;
+	background-color: #dddddd;
+    border: #888888 1px solid;
+    border-radius:5px;
+    cursor: pointer;
+    outline: none;
+    padding: 5px;
+    appearance: none;
+    font-size: 14px;
+    font-weight : bolder;
+}
+
+.clear_fix:after {
+	content :"";
+	display :block;
+	clear :both;
 }
 

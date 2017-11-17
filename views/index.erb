@@ -7,12 +7,12 @@
 		<title>Haguluma blog</title>
 		
 		<!--GITHUB風にしてくれるスタイルシート-->
+		<script src="/js/jquery-3.1.1.min.js"></script>
 		<link href="/css/github_style.css" rel="stylesheet">
 		<link href="/css/init.css" rel="stylesheet">
 		<link href="/css/index.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
-		
 		<!--マークダウン変換コード-->
 		<script src="/js/marked.js"></script>
 		
@@ -21,29 +21,64 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 		
 		<script src="/js/index.js"></script>
+		<script src="/js/wiki.js"></script>
+		<script src="/js/jukebox.js"></script>
 		
 		
 	</head>
 	<body>
 		<div class="global_wrap">
 			<nav id="global_nav">
-				<ul>
+				<ul id='menu'>
 					<li><a onclick='open_page(1);'>menu1</a></li>
-					<li><a onclick='open_page(2);'>menu2</a></li>
+					<li><a onclick='open_page(2);'>jukebox</a></li>
 					<li><a onclick='open_page(3);'>wiki</a></li>
 				</ul>
 			</nav>
 			<header></header>
 			<div id="contents_wrap">
 				<div id="main_contents">
-					<div id='page1' class='page'>page1</div>
-					<div id='page2' class='page'>page2</div>
-					<div id='page3' class='page'>
-						<input id='test_input'></input>
-						<button onclick="create_data();">button</button>
+					<div id='page1' class='page p1'></div>
+					<div id='page2' class='page p2'>
+						<div><input id='sound_request'></input><button id='juke_button' onclick="sound_start();">play</button></div>
+						<audio id='jukebox' src="/sound_swf/120m.mp3" controls loop></audio>
+					</div>
+					<div id='page3' class='page p3 Looking'>
+						<h1 id='wiki_title'></h1>
+						<div id='wiki_content'></div>
+					</div>
+					<div id='wiki_workdesk' class='page p4'>
+						<div id='wiki_edit_mode' hidden></div>
+						<div id='wiki_fileid_data' hidden></div>
+						<div id='wiki_markdown_data' hidden></div>
+						<div>
+							<input style='width:100%;height:40px;font-size:20px;margin-bottom:10px;margin-left:2px;'></input>
+							<textarea></textarea>
+							<div id='wiki_preview' class="hide"></div>
+						</div>
 					</div>
 				</div>
-				<div id="sub_contents"></div>
+				<div id="sub_contents">
+					<div id='page3_side' class='page p3 Looking side'>
+						<div class='clear_fix' style='width:100%;height:50px;'>
+							<div style='padding:2% 8%;float:left;width:40%;height:100%;'>
+								<button onclick='open_page(4);wiki_mode("edit");' style='width:100%;height:100%'>Edit</button>
+							</div>
+							<div style='padding:2% 10%;float:left;width:60%;height:100%;'>
+								<button onclick='open_page(4);wiki_mode("new");' style='background-color:#32CD32;border:green solid 1px;width:100%;height:100%'>New Page</button>
+							</div>
+						</div>
+						<div style='padding:2% 3%;'><ul id='wiki_title_lists'></ul></div>
+					</div>
+					<div class='page p4 side'>
+						<button onclick='open_page(3);input_clear("#wiki_workdesk input");input_clear("#wiki_workdesk textarea");' style='margin-bottom:20px;'>quit to edit</button>
+						<div>
+							<button id='wiki_preview_button' onclick="show_preview('#wiki_workdesk textarea','#wiki_preview','#wiki_preview_button');">preview</button>
+							<!--↓ちょっとやばいな笑-->
+							<button onclick='wiki_create_data();open_page(3);input_clear("#wiki_workdesk input");input_clear("#wiki_workdesk textarea");dom_empty("#wiki_title_lists");dom_empty("#wiki_title");dom_empty("#wiki_content");fetch_data();'>submit</button>
+						</div>
+					</div>
+				</div>
 			</div>		
 			<footer></footer>
 		</div>
