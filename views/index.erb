@@ -6,11 +6,12 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<title>Haguluma blog</title>
 		
+		<!--<script src="/js/jquery-3.1.1.min.js"></script>オフラインの時はこっち-->
 		<!--GITHUB風にしてくれるスタイルシート-->
-		<script src="/js/jquery-3.1.1.min.js"></script>
 		<link href="/css/github_style.css" rel="stylesheet">
 		<link href="/css/init.css" rel="stylesheet">
 		<link href="/css/index.css" rel="stylesheet">
+		<link href="/css/talk.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
 		<!--マークダウン変換コード-->
@@ -21,66 +22,156 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 		
 		<script src="/js/index.js"></script>
+		<script src='/js/workdesk.js'></script>
 		<script src="/js/wiki.js"></script>
+		<script src='/js/talk.js'></script>
 		<script src="/js/jukebox.js"></script>
 		
 		
 	</head>
 	<body>
+		
 		<div class="global_wrap">
-			<nav id="global_nav">
-				<ul id='menu'>
-					<li><a onclick='open_page(1);'>menu1</a></li>
-					<li><a onclick='open_page(2);'>jukebox</a></li>
-					<li><a onclick='open_page(3);'>wiki</a></li>
-				</ul>
-			</nav>
-			<header></header>
+			
+			<header>
+				<nav id="global_nav">
+					<ul id='menu'>
+						<li><a id='menu0' onclick='open_page(0);'>Mainpage</a></li>
+						<li><a id='menu1' onclick='open_page(1);'>Chatroom</a></li>
+						<li><a id='menu6' onclick='open_page(6);'>Illust</a></li>
+						<li><a id='menu7' onclick='open_page(7);'>Model</a></li>
+						<li><a id='menu8' onclick='open_page(8);'>Other</a></li>
+						<li><a id='menu2' onclick='open_page(2);'>Jukebox</a></li>
+						<li><a id='menu3' onclick='open_page(3);'>Memorumdom</a></li>
+					</ul>
+				</nav>
+			</header>
+			
+			
+			<div id='middle' style='height:50px;width:100%;border:1px solid;'>
+				<div id='content_title'></div>
+			</div>
+			
+			
 			<div id="contents_wrap">
-				<div id="main_contents">
-					<div id='page1' class='page p1'></div>
-					<div id='page2' class='page p2'>
-						<div><input id='sound_request'></input><button id='juke_button' onclick="sound_start();">play</button></div>
-						<audio id='jukebox' src="/sound_swf/120m.mp3" controls loop></audio>
-					</div>
-					<div id='page3' class='page p3 Looking'>
-						<h1 id='wiki_title'></h1>
-						<div id='wiki_content'></div>
-					</div>
-					<div id='wiki_workdesk' class='page p4'>
-						<div id='wiki_edit_mode' hidden></div>
-						<div id='wiki_fileid_data' hidden></div>
-						<div id='wiki_markdown_data' hidden></div>
-						<div>
-							<input style='width:100%;height:40px;font-size:20px;margin-bottom:10px;margin-left:2px;'></input>
-							<textarea></textarea>
-							<div id='wiki_preview' class="hide"></div>
-						</div>
-					</div>
-				</div>
-				<div id="sub_contents">
-					<div id='page3_side' class='page p3 Looking side'>
+				
+				
+				<!--左側サイドバー-->
+				<div id="left_sub_contents">
+					
+					<!--memorundom right side-->
+					<div id='page3_side' class='page p3 side'>
 						<div class='clear_fix' style='width:100%;height:50px;'>
 							<div style='padding:2% 8%;float:left;width:40%;height:100%;'>
-								<button onclick='open_page(4);wiki_mode("edit");' style='width:100%;height:100%'>Edit</button>
+								<button onclick='open_page(4);edit_mode("edit_wiki");' style='width:100%;height:100%'>Edit</button>
 							</div>
 							<div style='padding:2% 10%;float:left;width:60%;height:100%;'>
-								<button onclick='open_page(4);wiki_mode("new");' style='background-color:#32CD32;border:green solid 1px;width:100%;height:100%'>New Page</button>
+								<button onclick='open_page(4);edit_mode("new_wiki");' style='background-color:#32CD32;border:green solid 1px;width:100%;height:100%'>New Page</button>
 							</div>
 						</div>
 						<div style='padding:2% 3%;'><ul id='wiki_title_lists'></ul></div>
 					</div>
-					<div class='page p4 side'>
-						<button onclick='open_page(3);input_clear("#wiki_workdesk input");input_clear("#wiki_workdesk textarea");' style='margin-bottom:20px;'>quit to edit</button>
+					
+				</div>
+				
+				
+				<!--メインコンテンツ-->
+				<div id="main_contents">
+					
+					<!--MainPage-->
+					<div id='page0' class='page p0 main'>
+						<div id='top_content' style='height:300;border:1px solid;'>MainContents</div>
+						<div id='top_notice' style='height:300;border:1px solid;'>Notice</div>
+					</div>
+					
+					<!--Chatroom-->
+					<div id='page1' class='page p1 main'>
+						<div class='clear_fix' style='width:30%;height:50px;'>
+							<div style='float:left;width:130px;height:100%;'>
+								<button onclick='open_page(4);edit_mode("new_talk");' style='width:100%;height:100%'>New Page</button>
+							</div>
+						</div>
+						<div><ul id='talk_title_lists'></ul></div>
+					</div>
+					
+					<!--Illust-->
+					<div id='page6' class='page p6 main'></div>
+					
+					<!--Model-->
+					<div id='page7' class='page p7 main'></div>
+					
+					<!--Other-->
+					<div id='page8' class='page p8 main'></div>
+					
+					<!--Jukebox-->
+					<div id='page2' class='page p2 main'>
+						<div><input id='sound_request'></input><button id='juke_button' onclick="sound_start();">play</button></div>
+						<audio id='jukebox' src="/sound_swf/120m.mp3" controls loop></audio>
+					</div>
+					
+					<!--Memorundom-->
+					<div id='page3' class='page p3 main'>
+						<h1 id='wiki_title'></h1>
+						<div id='wiki_content'></div>
+					</div>
+					
+					<!--edit template-->
+					<div id='workdesk' class='page p4 main'>
+						<div id='edit_mode' hidden></div>
+						<div id='fileid_data' hidden></div>
+						<div id='markdown_data' hidden></div>
 						<div>
-							<button id='wiki_preview_button' onclick="show_preview('#wiki_workdesk textarea','#wiki_preview','#wiki_preview_button');">preview</button>
-							<!--↓ちょっとやばいな笑-->
-							<button onclick='wiki_create_data();open_page(3);input_clear("#wiki_workdesk input");input_clear("#wiki_workdesk textarea");dom_empty("#wiki_title_lists");dom_empty("#wiki_title");dom_empty("#wiki_content");fetch_data();'>submit</button>
+							<input style='width:100%;height:40px;font-size:20px;margin-bottom:10px;margin-left:2px;'></input>
+							<textarea></textarea>
+							<div id='preview' class="hide"></div>
+						</div>
+					</div>
+					
+					<!--Chatcontent-->
+					<div id='talk_page' class='page p5 main'>
+						<div>
+							<span style='margin-right:10px' id='talk_contributor'></span><span id='talk_time'></span>
+						</div>
+						<h1 id='talk_title'></h1>
+						<div id='talk_content'></div>
+						<ul id="talk_chat_list"></ul>
+						<div id="talk_comment_pad" class="pad">
+							<input type='file' id="talk_comment_file" style='margin-bottom : 5px;'/><br>
+							<textarea style="width:100%;"></textarea><br>
+						</div>
+						<button style="font-size:12px;" onClick="talk_submit_comment();" id="talk_comment_subbmit_button">コメント</button>
+					</div>
+					
+				</div>
+				
+				
+				<!--右側サイドバー-->
+				<div id="right_sub_contents">
+					<!--mainpage right side-->
+					<div id='page0_side' class='page p0 side'>
+							<div id='top_timeline' style='height:600;border:1px solid;'>Updates</div>
+					</div>
+					<!--chatroom right side-->
+					<div id='page1_side' class='page p1 side'></div>
+					
+					
+					
+					<!--edit_template right side-->
+					<div class='page p4 side'>
+						<button onclick='open_page(3);input_clear("#workdesk input");input_clear("#workdesk textarea");' style='margin-bottom:20px;'>quit to edit</button>
+						<div>
+							<button id='preview_button' onclick="show_preview('#workdesk textarea','#preview','#preview_button');">preview</button>
+							<button onclick='create_data();open_page(3);end_submit()'>submit</button>
 						</div>
 					</div>
 				</div>
-			</div>		
+				
+				
+				
+			</div>
+			
 			<footer></footer>
+			
 		</div>
 	</body>
 </html>

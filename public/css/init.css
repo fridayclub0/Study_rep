@@ -1,6 +1,28 @@
 body {
 	margin : 0;
+	padding : 10;
 }
+
+nav {
+		height: 50px;
+		width:100%;
+		/*border:inherit;*/
+}
+header{
+		box-sizing : border-box;
+		position : relative;
+		height: 160px;
+		width:100%;
+		border:1px solid;
+}
+
+footer{
+		box-sizing : border-box;
+		height:25px;
+		width:100%;
+		border:1px solid;
+}
+
 
 div {
 	box-sizing: border-box;
@@ -11,6 +33,28 @@ div {
 	padding : 0;
 	margin : 0;
 }
+
+p {
+	margin : 0;
+	padding : 0;
+}
+button{
+	box-sizing : border-box;
+	background-color: #dddddd;
+    border: #888888 1px solid;
+    border-radius:5px;
+    cursor: pointer;
+    outline: none;
+    padding: 5px;
+    appearance: none;
+    font-size: 14px;
+    font-weight : bolder;
+}
+
+button:hover {
+	background-color : grey;
+}/*12/13*/
+
 
 /*
 button {
@@ -33,26 +77,4 @@ small {
 */
 
 /*テキスト*/
-p {
-	margin : 0;
-	padding : 0;
-}
-button{
-	box-sizing : border-box;
-	background-color: #dddddd;
-    border: #888888 1px solid;
-    border-radius:5px;
-    cursor: pointer;
-    outline: none;
-    padding: 5px;
-    appearance: none;
-    font-size: 14px;
-    font-weight : bolder;
-}
-
-.clear_fix:after {
-	content :"";
-	display :block;
-	clear :both;
-}
 
