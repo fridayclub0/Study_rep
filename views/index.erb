@@ -31,26 +31,34 @@
 	</head>
 	<body>
 		
-		<div class="global_wrap">
+		<div id="global_wrap">
 			
 			<header>
-				<nav id="global_nav">
-					<ul id='menu'>
-						<li><a id='menu0' onclick='open_page(0);'>Mainpage</a></li>
-						<li><a id='menu1' onclick='open_page(1);'>Chatroom</a></li>
-						<li><a id='menu6' onclick='open_page(6);'>Illust</a></li>
-						<li><a id='menu7' onclick='open_page(7);'>Model</a></li>
-						<li><a id='menu8' onclick='open_page(8);'>Other</a></li>
-						<li><a id='menu2' onclick='open_page(2);'>Jukebox</a></li>
-						<li><a id='menu3' onclick='open_page(3);'>Memorumdom</a></li>
-					</ul>
-				</nav>
+				<div>
+					<div>
+						<a id='mainpage' onclick='open_page(0);'>Mainpage</a>
+					</div>
+					
+					<nav id="global_nav">
+						<ul id='menu'>
+							<li><a id='menu1' onclick='open_page(1);'>Chatroom</a></li>
+							<li><a id='menu6' onclick='open_page(6);'>Illust</a></li>
+							<li><a id='menu7' onclick='open_page(7);'>Model</a></li>
+							<li><a id='menu8' onclick='open_page(8);'>Other</a></li>
+							<li><a id='menu2' onclick='open_page(2);'>Jukebox</a></li>
+							<li><a id='menu3' onclick='open_page(3);'>Memorumdom</a></li>
+						</ul>
+					</nav>
+				</div>
 			</header>
 			
 			
+			<!--
 			<div id='middle' style='height:50px;width:100%;border:1px solid;'>
 				<div id='content_title'></div>
 			</div>
+			
+			-->
 			
 			
 			<div id="contents_wrap">
@@ -170,7 +178,7 @@
 				
 			</div>
 			
-			<footer></footer>
+			<!--<footer></footer>-->
 			
 		</div>
 	</body>
