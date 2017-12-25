@@ -12,6 +12,7 @@
 		<link href="/css/init.css" rel="stylesheet">
 		<link href="/css/index.css" rel="stylesheet">
 		<link href="/css/talk.css" rel="stylesheet">
+		<link href="/css/cs.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
 		<!--マークダウン変換コード-->
@@ -26,10 +27,39 @@
 		<script src="/js/wiki.js"></script>
 		<script src='/js/talk.js'></script>
 		<script src="/js/jukebox.js"></script>
+		<script src="/js/submittion.js"></script>
 		
 		
 	</head>
+	
 	<body>
+		
+		<div id='content_submittion_wrap'>
+			<div id='content_submittion'>
+				<button id='cs_back' onclick="submittion_float('back');">✕</button>
+				<div class='clear_fix' style='border:1px solid'>
+					<div style='width:30%;border:1px solid;height: 100%; float:left;padding:5px;'>
+						<div id='cs_drag_and_drop' style='text-align: center;height:300px;width:100%;border:solid 1px;'>
+							<span style='line-height: 300px;'>Drag and Drop here !</span>
+						</div>
+						<label><input type='file'></input></label>
+					</div>
+					<div style='width:70%;border:1px solid;height:100%;float:left;padding: 5px;position: relative;'>
+						<label>category : 
+							<select>
+								<option>Illust</option>
+								<option>Moddel</option>
+								<option>Other</option>
+							</select>
+						</label>
+						<label>tag : <input></input></label><br>
+						<label>comment : </label><br>
+						<textarea style='width:100%;height:70%;'></textarea>
+						<button style='position: absolute;bottom:5px;right:5px;'>submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		<div class="global_wrap">
 			
@@ -46,12 +76,6 @@
 					</ul>
 				</nav>
 			</header>
-			
-			
-			<div id='middle' style='height:50px;width:100%;border:1px solid;'>
-				<div id='content_title'></div>
-			</div>
-			
 			
 			<div id="contents_wrap">
 				
@@ -95,7 +119,10 @@
 					</div>
 					
 					<!--Illust-->
-					<div id='page6' class='page p6 main'></div>
+					<div id='page6' class='page p6 main'>
+						<div id='illusts_title_list' style='height:500px;border:1px solid;'></div>
+						<button onclick="submittion_float('float');">投稿</button>
+					</div>
 					
 					<!--Model-->
 					<div id='page7' class='page p7 main'></div>
@@ -134,12 +161,13 @@
 						</div>
 						<h1 id='talk_title'></h1>
 						<div id='talk_content'></div>
-						<ul id="talk_chat_list"></ul>
-						<div id="talk_comment_pad" class="pad">
-							<input type='file' id="talk_comment_file" style='margin-bottom : 5px;'/><br>
+						
+						<div id="talk_comment_pad" class="pad" style='margin-top:20px;'>
+							<!--<input type='file' id="talk_comment_file" style='margin-bottom : 5px;'/><br>-->
 							<textarea style="width:100%;"></textarea><br>
 						</div>
-						<button style="font-size:12px;" onClick="talk_submit_comment();" id="talk_comment_subbmit_button">コメント</button>
+						<button style="font-size:12px;" onClick="talk_submit_comment();input_clear('#talk_comment_pad textarea');" id="talk_comment_submit_button">コメント</button>
+						<ul id="talk_comment_list"></ul>
 					</div>
 					
 				</div>
@@ -154,14 +182,12 @@
 					<!--chatroom right side-->
 					<div id='page1_side' class='page p1 side'></div>
 					
-					
-					
 					<!--edit_template right side-->
 					<div class='page p4 side'>
 						<button onclick='open_page(3);input_clear("#workdesk input");input_clear("#workdesk textarea");' style='margin-bottom:20px;'>quit to edit</button>
 						<div>
 							<button id='preview_button' onclick="show_preview('#workdesk textarea','#preview','#preview_button');">preview</button>
-							<button onclick='create_data();open_page(3);end_submit()'>submit</button>
+							<button onclick='create_data();end_submit()'>submit</button>
 						</div>
 					</div>
 				</div>
