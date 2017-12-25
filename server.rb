@@ -23,7 +23,7 @@ end
 
 post '/database' do
   table = params[:table]
-  return_data = 0
+  return_data = 'success?'
   
   if table == 'Test' then
     mode = params[:mode]
@@ -48,10 +48,6 @@ post '/database' do
       p 'new_talk'
       Talk.create(:file_id=>file_id,:talk_title=>title)
     end
-#    if mode == 'talk_comment' then
-#      p 'new_talk'
-#      
-#    end
     
     if mode == 'new_wiki'||mode == 'edit_wiki' then
       File.open('./public/testfiles/'+file_id+'.md','w+:utf-8') do |file|
@@ -66,8 +62,11 @@ post '/database' do
         file.write(file_text+"\n")
         file.close
       end
+      File.open('./public/talk_comment_files/'+file_id+'.md','w+:utf-8') do |file|
+        file.close
+      end
     end
-        
+       
     return_data=file_text
   end
   
@@ -78,7 +77,7 @@ post '/database' do
   end
   
   if table == 'fetch_talk_title' then
-    talk_list = Talk.limit(20) #.order('file_no DESC') #.limit(list_num)
+    talk_list = Talk.order('file_no DESC').limit(20)
     p talk_list.to_json
     return_data=talk_list.to_json
   end
@@ -97,10 +96,29 @@ post '/database' do
     p return_data
     File.open('./public/talkfiles/'+file_id+'.md','r:utf-8') do |file|
       return_data[0]['content']=file.read
-      return_data = return_data.to_json
       file.close
     end
+    comments=[]
+    File.open('./public/talk_comment_files/'+file_id+'.md','r:utf-8') do |file|
+      while line = file.gets
+        comments.unshift(JSON.parse(line))
+      end
+      file.close
+    end
+    return_data[0]['comments']=comments
+    return_data = return_data.to_json
   end
   
+  if table == 'talk_comment' then
+      p 'talk_comment'
+      file_id = params[:file_id];
+      comment = params[:comment];
+      File.open('./public/talk_comment_files/'+file_id+'.md','a:utf-8') do |file|
+        comment_data={'author'=>'guest','time'=>'time','comment'=>comment}
+        file.write(comment_data.to_json+"\n")
+        file.close
+      end
+  end
+    
   return_data
 end 

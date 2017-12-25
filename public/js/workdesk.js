@@ -3,14 +3,16 @@ function end_submit(){
 	mode = $('#edit_mode').text();
 	input_clear("#workdesk input");
 	input_clear("#workdesk textarea");
-	if (mode=='new_talk'||mode=='edit_talk'){
+	if (mode=='new_wiki'||mode=='edit_wiki'){
 		dom_empty("#wiki_title_lists");
 		dom_empty("#wiki_title");
 		dom_empty("#wiki_content");
+		open_page(3);
 		wiki_fetch_data();
 	}
 	if (mode=='new_talk'||mode=='edit_talk'){
 		dom_empty("#talk_title_lists");
+		open_page(1);
 		talk_fetch_data();
 	}
 }
@@ -74,12 +76,12 @@ function create_data(){
 		console.log('edit_talk');
 		formdata.append('file_id',$('#fileid_data').text());
 	} else if(mode=='talk_comment') {
-		var title = $('#talk_comment_pad input').val();
+		var file = $('#talk_comment_pad input').val();
 		var text = $('#talk_comment_pad textarea').val();
 	}
 	formdata.append('title',title);
 	formdata.append('file_text',text);
-	formdata.append('mode',mode);	
+	formdata.append('mode',mode);
 	send_data('Test',formdata);
 }
 
