@@ -5,41 +5,63 @@
 	clear :both;
 }
 
-.global_wrap{
-		box-sizing : border-box;
+#global_wrap{
+	box-sizing : border-box;
+	min-width:800px;
+}
+
+#global_nav{
+	position:absolute;
+	bottom:0;
 }
 
 #contents_wrap{
-		padding :5px 5px;
-		border:1px solid;
-		}
-#contents_wrap:after{
-		content :"";
-		display :block;
-		clear :both;
-		}
-#main_contents{
-		/*height:500px;*/
-		width:70%;
-		float: left;
-		border:inherit;
-		box-sizing : border-box;
+	/*padding :5px 5px;*/
+	/*border:1px solid;*/
+	margin:auto;
+	left:0;
+	right:0;
+	width:700;
 }
+
+#contents_wrap:after{
+	content :"";
+	display :block;
+	clear :both;
+}
+
+#main_contents{
+	/*height:500px;*/
+	width:70%;
+	float: left;
+	border:inherit;
+	box-sizing : border-box;
+}
+
 #right_sub_contents{
-		/*height:500px;*/
-		width:30%;
-		float:left;
-		border:inherit;
-		box-sizing : border-box;
+	/*height:500px;*/
+	width:30%;
+	float:left;
+	border:inherit;
+	box-sizing : border-box;
 }
 
 #left_sub_contents{
-		/*height:500px;*/
-		width:30%;
-		float:left;
-		border:inherit;
-		box-sizing : border-box;
+	/*height:500px;*/
+	width:30%;
+	float:left;
+	border:inherit;
+	box-sizing : border-box;
 }
+header div{
+	position: absolute;
+    width: 700px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    height: 100%;
+}
+
 
 #menu {
 	list-style-type : none;
@@ -48,41 +70,45 @@
 }
 #menu li {
 	margin : 0;
-	padding : 0;
+	padding-right : 15;
 	float:left;
-	width:10%;
+	/*width:10%;*/
 	/*height:100%;高さは指定しなくとも親要素と同じになる*/
 	list-style: none;
-	border:#000000 solid 1px;
+	/*border:#000000 solid 1px;*/
 	box-sizing:border-box;
 	text-align:center;
 }
 
 #menu li:hover {
 	background-color : rgba(0,0,0,0.3);
+	cursor:pointer;
 }
-
+#mainpage:hover{
+	cursor:pointer;
+}
 li a{
-		line-height:50px;
-		display: block;
+	line-height:50px;
+	display: block;
+	font-size:20;
 }
 ul:after{
-		content : "";
-   		display : block;
-     	clear : both;
+	content : "";
+	display : block;
+    clear : both;
 }
 /*ページ切り替え*/
 .page {
 	min-height : 300px;
 	width : 100%;
 	display : none;
-	padding : 20px 3%;
+	/*padding : 20px 3%;*/
 }
 
 .p4 {}
 
 .side {
-	padding : 20px 5%;
+	/*padding : 20px 5%;*/
 }
 
 .Looking {

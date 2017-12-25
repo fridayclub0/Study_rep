@@ -34,7 +34,7 @@ function open_page(num){
 	$('.side').removeClass('Looking');
 	page.addClass('Looking');
 	if ( selecter=='.p0' ){
-		$('#content_title').text($('#menu0').text());
+		$('#content_title').text($('#mainpage').text());
 		$('#left_sub_contents').css('display','none');
 		$('#right_sub_contents').css('display','block');
 		$('#main_contents').css('width','70%');
